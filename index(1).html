@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Front-end</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7fb;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .navbar {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .logo span {
+      color: #2563eb;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #374151;
+      margin-left: 28px;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    .hero {
+      padding: 90px 0;
+      background: linear-gradient(135deg, #ffffff 0%, #eef4ff 100%);
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero h1 {
+      font-size: 3.4rem;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      color: #0f172a;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #4b5563;
+      margin-bottom: 32px;
+      max-width: 580px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #2563eb;
+      color: #ffffff;
+      padding: 14px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 22px;
+      padding: 34px;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+    }
+
+    .code-box {
+      background: #0f172a;
+      color: #dbeafe;
+      padding: 24px;
+      border-radius: 16px;
+      font-family: Consolas, monospace;
+      font-size: 0.95rem;
+      overflow: hidden;
+    }
+
+    .code-box span {
+      color: #38bdf8;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: #111827;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #6b7280;
+      font-size: 1rem;
+    }
+
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .article-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 28px;
+      transition: 0.2s;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    }
+
+    .article-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .category {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #2563eb;
+      background: #eff6ff;
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    .article-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      color: #111827;
+    }
+
+    .article-card p {
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+
+    .meta {
+      font-size: 0.9rem;
+      color: #6b7280;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 16px;
+    }
+
+    .about {
+      background: #ffffff;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .about-content {
+      max-width: 850px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-content h2 {
+      font-size: 2rem;
+      margin-bottom: 18px;
+    }
+
+    .about-content p {
+      color: #4b5563;
+      font-size: 1.05rem;
+    }
+
+    footer {
+      padding: 32px 0;
+      text-align: center;
+      background: #0f172a;
+      color: #d1d5db;
+      font-size: 0.95rem;
+    }
+
+    footer strong {
+      color: #ffffff;
+    }
+
+    @media (max-width: 900px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .articles {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container navbar">
+      <div class="logo">Blog <span>Front-end</span></div>
+
+      <nav>
+        <a href="#inicio">Início</a>
+        <a href="#artigos">Artigos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-content">
+        <div>
+          <h1>Tecnologia, código e ideias que constroem o futuro.</h1>
+          <p>
+            Conteúdos sobre desenvolvimento web, boas práticas, ferramentas modernas
+            e tendências do universo front-end.
+          </p>
+          <a href="#artigos" class="btn">Explorar artigos</a>
+        </div>
+
+        <div class="hero-card">
+          <div class="code-box">
+            <p><span>&lt;article&gt;</span></p>
+            <p>&nbsp;&nbsp;&lt;h2&gt;Front-end moderno&lt;/h2&gt;</p>
+            <p>&nbsp;&nbsp;&lt;p&gt;HTML, CSS e JavaScript&lt;/p&gt;</p>
+            <p><span>&lt;/article&gt;</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="artigos">
+      <div class="container">
+        <div class="section-title">
+          <h2>Artigos em destaque</h2>
+          <p>Uma seleção de conteúdos introdutórios sobre desenvolvimento web.</p>
+        </div>
+
+        <div class="articles">
+          <article class="article-card">
+            <span class="category">Tecnologia</span>
+            <h3>O que é Front-end e por que ele importa</h3>
+            <p>
+              Entenda o papel do front-end no desenvolvimento web e como ele impacta
+              diretamente a experiência do usuário.
+            </p>
+            <div class="meta">
+              <span>20 mai. 2024</span>
+              <span>5 min de leitura</span>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <span class="category">Desenvolvimento web</span>
+            <h3>Boas práticas para um código mais limpo</h3>
+            <p>
+              Conheça princípios simples para escrever HTML, CSS e JavaScript de forma
+              mais organizada e escalável.
+            </p>
+            <div class="meta">
+              <span>12 mai. 2024</span>
+              <span>7 min de leitura</span>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <span class="category">Ferramentas</span>
+            <h3>Hospedagem de sites com a Vercel</h3>
+            <p>
+              Veja como uma aplicação estática pode ser publicada rapidamente usando
+              GitHub, deploy automático e domínio público.
+            </p>
+            <div class="meta">
+              <span>05 mai. 2024</span>
+              <span>6 min de leitura</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="sobre">
+      <div class="container about-content">
+        <h2>Sobre o projeto</h2>
+        <p>
+          Esta página foi criada como exemplo de front-end estático para demonstração
+          em sala de aula. O objetivo é apresentar uma estrutura simples, responsiva
+          e adequada para hospedagem na plataforma Vercel.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contato">
+    <p>
+      Desenvolvido por <strong>Gustavo Vargas</strong> e <strong>Vinicius Piaia</strong> —
+      Projeto demonstrativo para deploy na Vercel.
+    </p>
+  </footer>
+</body>
+</html>
